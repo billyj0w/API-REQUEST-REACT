@@ -88,7 +88,7 @@ function Pokemon() {
                                         <p>{pokemon.name}</p>
                                         <Link 
                                         to={`/pokemon/info`} 
-                                        state={{ from: `${index + 1}` }}
+                                        state={{ from: `${pokemon.url}` }}
                                         >
                                             <button>Ver mais...</button>
                                         </Link>

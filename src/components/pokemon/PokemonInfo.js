@@ -9,11 +9,11 @@ function PokemonInfo() {
     const [pokemonData, setPokemonData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [id, setId] = useState(parseInt(from))
+    const [newUrl, setNewUrl] = useState(from)
+    const [id, setId] = useState(null)
 
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
     const callPokemon = () => {
-        fetch(url)
+        fetch(newUrl)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(
@@ -24,38 +24,44 @@ function PokemonInfo() {
             })
             .then((data) => {
                 setPokemonData([data])
-                console.log(data)
                 setError(null)
             })
             .catch((err) => {
                 setError(err.message);
             }).finally(() => {
-                setLoading(false)
+                setLoading(false);
+                newId();
             })
     }
 
     const handleNext = () => {
-        let newId = id;
-        if (newId == 151) {
-            setId(1)
+        newId();
+        if (id == 151) {
+            setNewUrl("https://pokeapi.co/api/v2/pokemon/1/")
         } else {
-            setId(newId + 1)
+            setNewUrl("https://pokeapi.co/api/v2/pokemon/${id + 1}/")
         }
     }
 
     const handlePrevious = () => {
-        let newId = id;
-        if (newId == 1) {
-            setId(151)
+        newId();
+        if (id == 1) {
+            setNewUrl("https://pokeapi.co/api/v2/pokemon/151/")
         } else {
-            setId(newId - 1)
+            setNewUrl("https://pokeapi.co/api/v2/pokemon/${id - 1}/")
         }
     }
 
+    const newId = () => {
+        pokemonData.map(({ id }) => {
+            setId(id)
+        })
+        console.log(id);
+    }
 
     useEffect(() => {
-        callPokemon()
-    }, [id])
+        callPokemon();
+    }, [newUrl])
     return (
         <div>
             {loading && <div>Carregando dados...</div>}
@@ -81,22 +87,22 @@ function PokemonInfo() {
                                     <img src={`${sprites.front_default}`} />
                                 </div>
                                 <div className='status'>
-                                <h3>Type</h3>
+                                    <h3>Type</h3>
                                     {types.map(({ type }) => {
                                         return (
                                             <div className='statusItem'>
                                                 <p>{type.name}</p>
                                             </div>
-                                            )
+                                        )
                                     })}
                                 </div>
                                 <div className='status'>
-                                <h3>Base Status</h3>
+                                    <h3>Base Status</h3>
                                     {stats.map((stats) => {
                                         return (
                                             <div className='statusItem'>
-                                                    <p>{stats.stat.name}</p>
-                                                    <p>{stats.base_stat}</p>
+                                                <p>{stats.stat.name}</p>
+                                                <p>{stats.base_stat}</p>
                                             </div>
                                         )
                                     })}
