@@ -33,3 +33,52 @@
     text-transform: capitalize;
     font-size: 1.5rem;
 }
+.pokemonInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokemonCard{
+    width: 95%;
+    max-width: 45vmax;
+    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 45px;
+    text-transform: capitalize;
+}
+.sprite{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sprite img{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    max-width: 100vw;
+}
+.sprite h3{
+    font-size: 2rem;
+    padding: 15px 0px;
+}
+.status{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+.status h3{
+    font-size: 1.3rem;
+    padding: 15px 0px;
+}
+.statusItem{
+    display: flex;
+    justify-content: space-between;
+}

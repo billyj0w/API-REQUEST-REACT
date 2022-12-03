@@ -24,6 +24,7 @@ function PokemonInfo() {
             })
             .then((data) => {
                 setPokemonData([data])
+                console.log(data)
                 setError(null)
             })
             .catch((err) => {
@@ -34,19 +35,19 @@ function PokemonInfo() {
     }
 
     const handleNext = () => {
-        let newId =  id;
-        if(newId == 151){
+        let newId = id;
+        if (newId == 151) {
             setId(1)
-        }else{
+        } else {
             setId(newId + 1)
         }
     }
 
     const handlePrevious = () => {
-        let newId =  id;
-        if(newId == 1){
+        let newId = id;
+        if (newId == 1) {
             setId(151)
-        }else{
+        } else {
             setId(newId - 1)
         }
     }
@@ -56,7 +57,7 @@ function PokemonInfo() {
         callPokemon()
     }, [id])
     return (
-        <div className="pokemonInfo">
+        <div>
             {loading && <div>Carregando dados...</div>}
             {
                 error && (
@@ -70,31 +71,41 @@ function PokemonInfo() {
                 <button onClick={handlePrevious}>Previous</button>
                 <button onClick={handleNext}>Next</button>
             </div>
-            <h1>Pokemon Info</h1><br/>
-            {pokemonData.map(({name, sprites, stats, types})=>{
-                return (
-                    <>
-                        <h4>{name}</h4>
-                        <img src={`${sprites.front_default}`}/>
-                        <p>Type(s)</p>
-                        <ul>
-                            {types.map(({type})=>{
-                                return <li>{type.name}</li>
-                            })}
-                        </ul>
-                        <p>Base Status</p>
-                        <ul>
-                            {stats.map((stats)=>{
-                                return(
-                                    <>
-                                        <li>{stats.base_stat} --- {stats.stat.name}</li>
-                                    </>
-                                )
-                            })}
-                        </ul>
-                    </>
-                    )
-            })}
+            <div className='pokemonInfo'>
+                <div className='pokemonCard'>
+                    {pokemonData.map(({ name, sprites, stats, types }) => {
+                        return (
+                            <>
+                                <div className='sprite'>
+                                    <h3>{name}</h3>
+                                    <img src={`${sprites.front_default}`} />
+                                </div>
+                                <div className='status'>
+                                <h3>Type</h3>
+                                    {types.map(({ type }) => {
+                                        return (
+                                            <div className='statusItem'>
+                                                <p>{type.name}</p>
+                                            </div>
+                                            )
+                                    })}
+                                </div>
+                                <div className='status'>
+                                <h3>Base Status</h3>
+                                    {stats.map((stats) => {
+                                        return (
+                                            <div className='statusItem'>
+                                                    <p>{stats.stat.name}</p>
+                                                    <p>{stats.base_stat}</p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     )
 }
