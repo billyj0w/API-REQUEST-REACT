@@ -63,12 +63,14 @@ function PokemonInfo() {
                     <div>{`Tivemos um problema ao carregar os dados - ${error}`}</div>
                 )
             }
-            <Link to="/pokemon" className="nav-item">
-                <li>voltar...</li>
-            </Link>
+            <div className='button search'>
+                <Link to="/pokemon" className="button">
+                    <li>voltar...</li>
+                </Link>
+                <button onClick={handlePrevious}>Previous</button>
+                <button onClick={handleNext}>Next</button>
+            </div>
             <h1>Pokemon Info</h1><br/>
-            <button onClick={handlePrevious}>Previous</button>
-            <button onClick={handleNext}>Next</button>
             {pokemonData.map(({name, sprites, stats, types})=>{
                 return (
                     <>

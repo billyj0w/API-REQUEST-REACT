@@ -69,26 +69,28 @@ function Pokemon() {
                     <div>{`Tivemos um problema ao carregar os dados - ${error}`}</div>
                 )
             }
-            <BackHome />
-            Pokemon
-            <button onClick={previousPokemon}>Back</button>
-            <button onClick={nextPokemon}>Next</button>
-            <input onChange={(e)=> filtraPokemon(e.target.value)} 
-                value={input} 
-                placeholder='pesquise um pokemon....' 
-                />
-            <div className='pokemonList'>
+            <div className='button search'>
+                <BackHome />
+                <input className='input' onChange={(e)=> filtraPokemon(e.target.value)} 
+                    value={input} 
+                    placeholder='pesquise um pokemon....' 
+                    />
+                <button onClick={previousPokemon}>Back</button>
+                <button onClick={nextPokemon}>Next</button>
+            </div>
+            <div className='pokemonList button'>
                 <ul>
                     {pokemonData.map(({ results }) => {
                         return (
                             <>
                                 {results.map((pokemon, index) => {
                                     return <li key={index}>
+                                        <p>{pokemon.name}</p>
                                         <Link 
                                         to={`/pokemon/info`} 
                                         state={{ from: `${index + 1}` }}
                                         >
-                                            {pokemon.name}
+                                            <button>Ver mais...</button>
                                         </Link>
                                     </li>
                                 })}
@@ -96,6 +98,10 @@ function Pokemon() {
                         )
                     })}
                 </ul>
+            </div>
+            <div className='button'>
+                <button onClick={previousPokemon}>Back</button>
+                <button onClick={nextPokemon}>Next</button>
             </div>
         </div >
     )

@@ -1,0 +1,35 @@
+.pokemon{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokemonList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokemonList ul{
+    width: 80%;
+}
+.pokemon ul li{
+    margin-bottom: 25px;
+}
+.pokemonList li{
+    width: 100%;
+    padding: 40px;
+    background-color: #f2f2f2;
+    color: #262626 !important;
+    border-bottom: 1px solid #bdbdbd;
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+.pokemonList p{
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}

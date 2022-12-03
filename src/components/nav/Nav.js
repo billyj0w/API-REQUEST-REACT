@@ -4,16 +4,16 @@ function Nav () {
     return(
         <div className='nav'>
             <ul>
-                <Link to="/pokemon" className="nav-item">
+                <Link to="/pokemon" className="button">
                     <li>Pokemon</li>
                 </Link>
-                <Link to="/city" className="nav-item">
+                <Link to="/city" className="button">
                     <li>City</li>
                 </Link>
-                <Link to="/gym" className="nav-item">
+                <Link to="/gym" className="button">
                     <li>Gym</li>
                 </Link>
-                <Link to="/items" className="nav-item">
+                <Link to="/items" className="button">
                     <li>Items</li>
                 </Link>
             </ul>
