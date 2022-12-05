@@ -1,0 +1,42 @@
+.itemsInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-height: auto;
+}
+.itemCard{
+    width: 95%;
+    max-width: 35vmax;
+    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    color: #262626;
+    border-radius: 45px;
+    text-transform: capitalize;
+}
+.itemCard p{
+    padding: 5px;
+}
+.spriteItem{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .spriteItem img{
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    max-width: 90vw;
+  }
+  .spriteItem h3, .spriteItem p{
+    font-size: 2rem;
+    padding: 15px 0px;
+  }

@@ -21,8 +21,8 @@ function Items() {
             })
             .then((data) => {
                 setItemData([data])
-                setError(null)
                 console.log(itemData)
+                setError(null)
             })
             .catch((err) => {
                 setError(err.message);
