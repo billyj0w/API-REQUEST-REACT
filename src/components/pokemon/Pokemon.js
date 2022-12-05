@@ -2,6 +2,7 @@ import './Pokemon.css';
 import BackHome from '../nav/BackHome';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { data } from 'autoprefixer';
 
 function Pokemon() {
     const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon/?limit=20`);
@@ -23,6 +24,7 @@ function Pokemon() {
             .then((data) => {
                 setPokemonData([data])
                 setError(null)
+                // console.log(data)
             })
             .catch((err) => {
                 setError(err.message);
@@ -54,12 +56,25 @@ function Pokemon() {
         }
     }
 
-    const filtraPokemon = (inputValue) => {
-
-    }
+    // const filtraPokemon = (inputValue) => {
+    //     let input = inputValue;
+    //     let filterData = null;
+    //     pokemonData.map(({ results }) => {return filterData = [results]})
+    //     console.log(filterData)
+    //     if(input != ''){
+    //         const filteredData = filterData[0].filter((item)=>{
+    //             return Object.values(item).join('').toLowerCase().includes(input.toLowerCase())
+    //           })
+    //         setPokemonData(filteredData);
+    //     }if(input == ''){
+    //         callPokemon();
+    //     }else{
+    //         callPokemon();
+    //     }
+    // }
 
     useEffect(() => {
-        callPokemon()
+        callPokemon();
     }, [url])
     return (
         <div className="pokemon">
@@ -71,10 +86,10 @@ function Pokemon() {
             }
             <div className='button search'>
                 <BackHome />
-                <input className='input' onChange={(e)=> filtraPokemon(e.target.value)} 
-                    value={input} 
+                {/* <input className='input' 
+                    onChange={(e)=> filtraPokemon(e.target.value)}  
                     placeholder='pesquise um pokemon....' 
-                    />
+                    /> */}
                 <button onClick={previousPokemon}>Back</button>
                 <button onClick={nextPokemon}>Next</button>
             </div>
@@ -84,11 +99,11 @@ function Pokemon() {
                         return (
                             <>
                                 {results.map((pokemon, index) => {
-                                    return <li key={index}>
+                                    return <li key={pokemon.name + index}>
                                         <p>{pokemon.name}</p>
                                         <Link 
                                         to={`/pokemon/info`} 
-                                        state={{ from: `${pokemon.url}` }}
+                                        state={{ from: `${pokemon.url}`, name: `${pokemon.name}` }}
                                         >
                                             <button>Ver mais...</button>
                                         </Link>
