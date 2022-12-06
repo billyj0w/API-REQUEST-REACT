@@ -14,7 +14,6 @@ function Battle() {
             .then((res) => res.json())
             .then((data) => {
                 setData([data])
-                console.log(data)
             }).catch((err) => console.log(err.message))
     }
 
@@ -23,7 +22,7 @@ function Battle() {
             .then((res) => res.json())
             .then((data) => {
                 setPlayer1([data])
-                console.log(player2)
+                console.log(player1)
             }).catch((err) => console.log(err.message))
     }
 
@@ -32,7 +31,6 @@ function Battle() {
             .then((res) => res.json())
             .then((data) => {
                 setPlayer2([data])
-                console.log(player1)
             }).catch((err) => console.log(err.message))
     }
 
@@ -68,8 +66,18 @@ function Battle() {
             )
         })
 
+let hpPlayer1 = player1.map(({ stats }) => { return parseInt(stats[0].base_stat) })
+let hpPlayer2 = player2.map(({ stats }) => { return parseInt(stats[0].base_stat) })
+
+let result =  hpPlayer1 > hpPlayer2 ? 'Greater' : hpPlayer1 < hpPlayer2 ? 'Less' : 'Equal'
     const player1Status =
-        player1.map(({ stats, types }) => {
+        player1.map(({ stats }) => {
+            // let hpPlayer1 = stats[0].base_stat;
+            // let attackPlayer1 = stats[1].base_stat;
+            // let defensePlayer1 = stats[2].base_stat;
+            // let specialAttackPlayer1 = stats[3].base_stat;
+            // let specialDefensePlayer1 = stats[4].base_stat;
+            // let speedPlayer1 = stats[5].base_stat;
             return (
                 <>
                     <div className='status'>
@@ -87,7 +95,7 @@ function Battle() {
         })
 
     const player2Status =
-        player2.map(({ stats, types }) => {
+        player2.map(({ stats }) => {
             return (
                 <>
                     <div className='status'>
@@ -104,8 +112,8 @@ function Battle() {
             )
         })
 
-    const filtraPokemon = (inputValue) => {
-        // let input = inputValue;
+    const filtraPokemon = (e) => {
+        let input = e.target.value;
         // let filterData = null;
         // pokemonData.map(({ results }) => { return filterData = [results] })
         // console.log(filterData)
@@ -151,6 +159,7 @@ function Battle() {
                     placeholder='pesquise um pokemon....' 
                     />
                 </div>
+                {result}
                 <div className='pokemonList button'>
                     {pokemonList}
                 </div>
