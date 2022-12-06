@@ -31,11 +31,8 @@ function ItemsInfo() {
     })
 
     const handleNext = () => {
-        if (id == 1) {
-            return
-        } else {
-            setUrlItemInfo(`https://pokeapi.co/api/v2/item/${parseInt(id) + 1}/`)
-        }
+        setUrlItemInfo(`https://pokeapi.co/api/v2/item/${parseInt(id) + 1}/`)
+
     }
 
     const handlePreview = () => {
