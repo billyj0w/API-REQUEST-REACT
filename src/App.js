@@ -6,6 +6,7 @@ import PokemonInfo from './components/pokemon/PokemonInfo';
 import Items from './components/items/Items';
 import ItemsInfo from './components/items/ItemInfo';
 import Nav from './components/nav/Nav'
+import Battle from './components/versus/Battle';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/pokemon/info" element={<PokemonInfo />}></Route>
         <Route path="/items" element={<Items />}></Route>
         <Route path="/items/info" element={<ItemsInfo />}></Route>
+        <Route path="/battle/" element={<Battle />}></Route>
         <Route path="/gym" element={<Gym />}></Route>
         <Route path="/city" element={<City />}></Route>
       </Routes>

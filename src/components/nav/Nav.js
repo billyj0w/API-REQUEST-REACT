@@ -10,6 +10,9 @@ function Nav () {
                 <Link to="/items" className="button">
                     <li>Items</li>
                 </Link>
+                <Link to="/battle" className="button">
+                    <li>Battle</li>
+                </Link>
                 <Link to="/city" className="button">
                     <li>City</li>
                 </Link>

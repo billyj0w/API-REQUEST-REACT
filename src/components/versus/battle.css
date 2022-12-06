@@ -1,0 +1,14 @@
+.versus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comparation{
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0;
+}
+.comparation >.pokemonCard{
+    margin: 10px;
+}
