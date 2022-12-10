@@ -7,6 +7,7 @@ function Battle() {
     const [data, setData] = useState([])
     const [player1, setPlayer1] = useState([])
     const [player2, setPlayer2] = useState([])
+    const [input, setInput] = useState('')
 
     const url = 'https://pokeapi.co/api/v2/pokemon/?limit=151'
     const callData = () => {
@@ -44,12 +45,11 @@ function Battle() {
         callPlayer2(name);
     }
 
-
-    const pokemonList =
+        const pokemonFilter =
         data.map(({ results }) => {
             return (
                 <ul>
-                    {results.map((item, index) => {
+                    {results.filter((item) => item.name.includes(`${input}`)).map(item => {
                         return (
                             <>
                                 <li>
@@ -154,12 +154,12 @@ let colorPlayer2 = mediaPlayer2 > mediaPlayer1 ? '#b6efa0' : mediaPlayer2 < medi
             <div className='button search'>
                 <BackHome />
                 <input className='input'
-                    onChange={(e) => filtraPokemon(e.target.value)}
+                    onChange={(e) => setInput(e.target.value)}
                     placeholder='pesquise um pokemon....'
                 />
             </div>
             <div className='pokemonList button'>
-                {pokemonList}
+                {pokemonFilter}
             </div>
         </div>
     )

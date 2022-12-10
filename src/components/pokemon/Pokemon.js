@@ -56,23 +56,6 @@ function Pokemon() {
         }
     }
 
-    // const filtraPokemon = (inputValue) => {
-    //     let input = inputValue;
-    //     let filterData = null;
-    //     pokemonData.map(({ results }) => {return filterData = [results]})
-    //     console.log(filterData)
-    //     if(input != ''){
-    //         const filteredData = filterData[0].filter((item)=>{
-    //             return Object.values(item).join('').toLowerCase().includes(input.toLowerCase())
-    //           })
-    //         setPokemonData(filteredData);
-    //     }if(input == ''){
-    //         callPokemon();
-    //     }else{
-    //         callPokemon();
-    //     }
-    // }
-
     useEffect(() => {
         callPokemon();
     }, [url])
@@ -86,10 +69,10 @@ function Pokemon() {
             }
             <div className='button search'>
                 <BackHome />
-                {/* <input className='input' 
-                    onChange={(e)=> filtraPokemon(e.target.value)}  
+                <input className='input' 
+                    onChange={(e)=> setInput(e.target.value)}  
                     placeholder='pesquise um pokemon....' 
-                    /> */}
+                    />
                 <button onClick={previousPokemon}>Back</button>
                 <button onClick={nextPokemon}>Next</button>
             </div>
@@ -98,7 +81,7 @@ function Pokemon() {
                     {pokemonData.map(({ results }) => {
                         return (
                             <>
-                                {results.map((pokemon, index) => {
+                                {results.filter((pokemon) => pokemon.name.includes(`${input}`)).map((pokemon, index) => {
                                     return <li key={pokemon.name + index}>
                                         <p>{pokemon.name}</p>
                                         <Link 
