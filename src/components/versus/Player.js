@@ -2,7 +2,7 @@ function Player (props){
     return(
         <>
             <div className='pokemonInfo'>
-                <div className='pokemonCard'>
+                <div className='pokemonCard' style={{ backgroundColor: `${props.color}` }}>
                     {props.data.map(({ name, sprites, stats, types, id }) => {
                         return (
                             <>

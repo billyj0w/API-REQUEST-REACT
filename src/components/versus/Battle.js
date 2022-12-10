@@ -65,19 +65,8 @@ function Battle() {
                 </ul>
             )
         })
-
-let hpPlayer1 = player1.map(({ stats }) => { return parseInt(stats[0].base_stat) })
-let hpPlayer2 = player2.map(({ stats }) => { return parseInt(stats[0].base_stat) })
-
-let result =  hpPlayer1 > hpPlayer2 ? 'Greater' : hpPlayer1 < hpPlayer2 ? 'Less' : 'Equal'
     const player1Status =
         player1.map(({ stats }) => {
-            // let hpPlayer1 = stats[0].base_stat;
-            // let attackPlayer1 = stats[1].base_stat;
-            // let defensePlayer1 = stats[2].base_stat;
-            // let specialAttackPlayer1 = stats[3].base_stat;
-            // let specialDefensePlayer1 = stats[4].base_stat;
-            // let speedPlayer1 = stats[5].base_stat;
             return (
                 <>
                     <div className='status'>
@@ -113,22 +102,32 @@ let result =  hpPlayer1 > hpPlayer2 ? 'Greater' : hpPlayer1 < hpPlayer2 ? 'Less'
         })
 
     const filtraPokemon = (e) => {
-        let input = e.target.value;
-        // let filterData = null;
-        // pokemonData.map(({ results }) => { return filterData = [results] })
-        // console.log(filterData)
-        // if (input != '') {
-        //     const filteredData = filterData[0].filter((item) => {
-        //         return Object.values(item).join('').toLowerCase().includes(input.toLowerCase())
-        //     })
-        //     setPokemonData(filteredData);
-        // } if (input == '') {
-        //     callPokemon();
-        // } else {
-        //     callPokemon();
-        // }
+
     }
 
+    let hpPlayer1 = player1.map(({ stats }) => { return parseInt(stats[0].base_stat) })
+    let attackPlayer1 = player1.map(({ stats }) => { return parseInt(stats[1].base_stat) })
+    let defensePlayer1 = player1.map(({ stats }) => { return parseInt(stats[2].base_stat) })
+    let specialAttackPlayer1 = player1.map(({ stats }) => { return parseInt(stats[3].base_stat) })
+    let specialDefensePlayer1 = player1.map(({ stats }) => { return parseInt(stats[4].base_stat) })
+    let speedPlayer1 = player1.map(({ stats }) => { return parseInt(stats[5].base_stat) })
+    let mediaPlayer1 = (hpPlayer1 + attackPlayer1 + 
+        defensePlayer1 + specialAttackPlayer1 + 
+        specialDefensePlayer1 + speedPlayer1) / 6;
+
+
+    let hpPlayer2 = player2.map(({ stats }) => { return parseInt(stats[0].base_stat) })
+    let attackPlayer2 = player2.map(({ stats }) => { return parseInt(stats[1].base_stat) })
+    let defensePlayer2 = player2.map(({ stats }) => { return parseInt(stats[2].base_stat) })
+    let specialAttackPlayer2 = player2.map(({ stats }) => { return parseInt(stats[3].base_stat) })
+    let specialDefensePlayer2 = player2.map(({ stats }) => { return parseInt(stats[4].base_stat) })
+    let speedPlayer2 = player2.map(({ stats }) => { return parseInt(stats[5].base_stat) })
+    let mediaPlayer2 = (hpPlayer2 + attackPlayer2 + 
+        defensePlayer2 + specialAttackPlayer2 + 
+        specialDefensePlayer2 + speedPlayer2) / 6;
+
+let colorPlayer1 = mediaPlayer1 > mediaPlayer2 ? '#b6efa0' : mediaPlayer1 < mediaPlayer2 ? '#ff4747' : '#fff'
+let colorPlayer2 = mediaPlayer2 > mediaPlayer1 ? '#b6efa0' : mediaPlayer2 < mediaPlayer1 ? '#ff4747' : '#fff'
     useEffect(() => {
         callData();
     }, [])
@@ -139,30 +138,29 @@ let result =  hpPlayer1 > hpPlayer2 ? 'Greater' : hpPlayer1 < hpPlayer2 ? 'Less'
             </div>
             <div className='pokemonList button'>
                 <div className="versus">
-                    <Player data={player1} />
+                    <Player data={player1} color={colorPlayer1}/>
                     <h2>VS</h2>
-                    <Player data={player2} />
+                    <Player data={player2} color={colorPlayer2}/>
                 </div>
                 <div className="pokemonList comparation">
-                    <div className='pokemonCard'>
+                    <div className='pokemonCard' style={{ backgroundColor: `${colorPlayer1}` }}>
                         {player1Status}
                     </div>
-                    <div className='pokemonCard'>
+                    <div className='pokemonCard' style={{ backgroundColor: `${colorPlayer2}` }}>
                         {player2Status}
                     </div>
                 </div>
             </div>
-                <div className='button search'>
-                    <BackHome />
-                    <input className='input' 
-                    onChange={(e)=> filtraPokemon(e.target.value)}  
-                    placeholder='pesquise um pokemon....' 
-                    />
-                </div>
-                {result}
-                <div className='pokemonList button'>
-                    {pokemonList}
-                </div>
+            <div className='button search'>
+                <BackHome />
+                <input className='input'
+                    onChange={(e) => filtraPokemon(e.target.value)}
+                    placeholder='pesquise um pokemon....'
+                />
+            </div>
+            <div className='pokemonList button'>
+                {pokemonList}
+            </div>
         </div>
     )
 }
