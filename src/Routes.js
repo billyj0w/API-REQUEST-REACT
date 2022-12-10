@@ -1,11 +1,10 @@
-import './App.css';
+import Home from './components/Home';
 import City from './components/city/City';
 import Gym from './components/gym/Gym';
 import Pokemon from './components/pokemon/Pokemon';
 import PokemonInfo from './components/pokemon/PokemonInfo';
 import Items from './components/items/Items';
 import ItemsInfo from './components/items/ItemInfo';
-import Nav from './components/nav/Nav'
 import Battle from './components/versus/Battle';
 import { Routes, Route } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Nav />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/pokemon" element={<Pokemon />}></Route>
         <Route path="/pokemon/info" element={<PokemonInfo />}></Route>
         <Route path="/items" element={<Items />}></Route>
