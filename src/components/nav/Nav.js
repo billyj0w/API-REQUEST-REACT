@@ -13,6 +13,8 @@ function Nav () {
                 <Link to="/battle" className="button">
                     <li>Battle</li>
                 </Link>
+            </ul>
+            <ul>
                 <Link to="/city" className="button">
                     <li>City</li>
                 </Link>
