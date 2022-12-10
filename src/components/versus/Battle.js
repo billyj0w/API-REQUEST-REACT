@@ -155,7 +155,7 @@ let colorPlayer2 = mediaPlayer2 > mediaPlayer1 ? '#b6efa0' : mediaPlayer2 < medi
                 <BackHome />
                 <input className='input'
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder='pesquise um pokemon....'
+                    placeholder='search a pokemon....'
                 />
             </div>
             <div className='pokemonList button'>

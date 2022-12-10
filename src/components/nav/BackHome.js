@@ -3,7 +3,7 @@ function BackHome() {
     return (
         <div>
             <Link to="/" className="button">
-                <li>voltar...</li>
+                <li>Home...</li>
             </Link>
         </div>
     )

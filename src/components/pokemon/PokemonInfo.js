@@ -66,7 +66,7 @@ function PokemonInfo() {
             }
             <div className='button search'>
                 <Link to="/pokemon" className="button">
-                    <li>voltar...</li>
+                    <li>Home...</li>
                 </Link>
                 {pokemonData.map(({ id }) => {
                     return (

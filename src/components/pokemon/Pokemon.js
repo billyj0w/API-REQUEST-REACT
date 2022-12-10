@@ -71,7 +71,7 @@ function Pokemon() {
                 <BackHome />
                 <input className='input' 
                     onChange={(e)=> setInput(e.target.value)}  
-                    placeholder='pesquise um pokemon....' 
+                    placeholder='search a pokemon....'
                     />
                 <button onClick={previousPokemon}>Back</button>
                 <button onClick={nextPokemon}>Next</button>
@@ -88,7 +88,7 @@ function Pokemon() {
                                         to={`/pokemon/info`} 
                                         state={{ from: `${pokemon.url}`, name: `${pokemon.name}` }}
                                         >
-                                            <button>Ver mais...</button>
+                                            <button>Details...</button>
                                         </Link>
                                     </li>
                                 })}
