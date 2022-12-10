@@ -15,10 +15,10 @@ function Nav () {
                 </Link>
             </ul>
             <ul>
-                <Link to="/city" className="button">
+                <Link to="/city" className="button" style={{pointerEvents: 'none'}}>
                     <li>City</li>
                 </Link>
-                <Link to="/gym" className="button">
+                <Link to="/gym" className="button" style={{pointerEvents: 'none'}}>
                     <li>Gym</li>
                 </Link>
             </ul>
