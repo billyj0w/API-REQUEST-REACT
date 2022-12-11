@@ -92,7 +92,7 @@ function PokemonInfo() {
                                     {types.map(({ type }) => {
                                         return (
                                             <div className='statusItem'>
-                                                <p>{type.name}</p>
+                                                <p key={type.name}>{type.name}</p>
                                             </div>
                                         )
                                     })}
@@ -102,8 +102,8 @@ function PokemonInfo() {
                                     {stats.map((stats) => {
                                         return (
                                             <div className='statusItem'>
-                                                <p>{stats.stat.name}</p>
-                                                <p>{stats.base_stat}</p>
+                                                <p key={stats.stat.name}>{stats.stat.name}</p>
+                                                <p key={stats.base_stat}>{stats.base_stat}</p>
                                             </div>
                                         )
                                     })}
