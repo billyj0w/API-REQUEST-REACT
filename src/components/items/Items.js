@@ -6,6 +6,7 @@ function Items() {
 
     const [urlItem, setUrlItem] = useState(`https://pokeapi.co/api/v2/item/`);
     const [itemData, setItemData] = useState([]);
+    const [input, setInput] = useState('')
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -21,7 +22,6 @@ function Items() {
             })
             .then((data) => {
                 setItemData([data])
-                console.log(itemData)
                 setError(null)
             })
             .catch((err) => {
@@ -68,6 +68,10 @@ function Items() {
             }
             <div className='button search'>
                 <BackHome />
+                <input className='input' 
+                placeholder='Search a item...'
+                onChange={(e)=> setInput(e.target.value)}
+                />
                 <button onClick={previousItem}>Back</button>
                 <button onClick={nextItem}>Next</button>
             </div>
@@ -75,10 +79,10 @@ function Items() {
                 <ul>
                     {
                         itemData.map((item) => {
-                            return item.results.map((itemName) => {
+                            return item.results.filter(item=> item.name.includes(`${input}`)).map((itemName) => {
                                 return (
                                     <>
-                                        <li>
+                                        <li key={item.name+item.url}>
                                             <p>{itemName.name}</p>
                                             <Link
                                                 to={`/items/info`}

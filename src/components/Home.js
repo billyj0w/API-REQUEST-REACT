@@ -3,7 +3,8 @@ import './Home.css'
 import HomeBanner from '../assets/home-banner.png'
 function Home () {
     return (
-        <div className="home" style={{ backgroundImage: `url(${HomeBanner})` }}>
+        // <div className="home" style={{ backgroundImage: `url(${HomeBanner})` }}></div>
+        <div className="home">
             <div className="homeMain">
                 <h1>Welcome To The Pokemon World!</h1>
                 <Nav />

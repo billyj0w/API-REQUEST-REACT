@@ -23,7 +23,6 @@ function Battle() {
             .then((res) => res.json())
             .then((data) => {
                 setPlayer1([data])
-                console.log(player1)
             }).catch((err) => console.log(err.message))
     }
 
@@ -52,7 +51,7 @@ function Battle() {
                     {results.filter((item) => item.name.includes(`${input}`)).map(item => {
                         return (
                             <>
-                                <li>
+                                <li key={item.name}>
                                     <p>{item.name}</p>
                                     <div>
                                         <button onClick={handlePlayer1} value={item.name}>Player 1</button>
@@ -72,7 +71,7 @@ function Battle() {
                     <div className='status'>
                         {stats.map((stats) => {
                             return (
-                                <div className='statusItem'>
+                                <div className='statusItem' key={stats.stat.name}>
                                     <p>{stats.stat.name}</p>
                                     <p>{stats.base_stat}</p>
                                 </div>
@@ -90,7 +89,7 @@ function Battle() {
                     <div className='status'>
                         {stats.map((stats) => {
                             return (
-                                <div className='statusItem'>
+                                <div className='statusItem' key={stats.stat.name}>
                                     <p>{stats.base_stat}</p>
                                     <p>{stats.stat.name}</p>
                                 </div>
